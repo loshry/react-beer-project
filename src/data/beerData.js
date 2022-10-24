@@ -1,3 +1,5 @@
+import sampleBeers from "./beers";
+
 const url = "https://api.punkapi.com/v2/beers";
 
  export const findBeers = async () => {

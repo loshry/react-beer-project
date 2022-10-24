@@ -1,8 +1,8 @@
 import "./CheckBoxes.scss";
 
-const CheckBoxes = ({ onChange, selected, options, label }) => {
+const CheckBoxes = ({ onChange, checked, options, label }) => {
   return (
-    <div className="radio-buttons">
+    <div className="checkboxes">
       <p>{label}</p>
       {options.map((option, index) => {
         const optionLower = option.toLowerCase();
@@ -14,10 +14,10 @@ const CheckBoxes = ({ onChange, selected, options, label }) => {
               type="checkbox"
               name="beer"
               value={optionLower}
-              checked={optionLower === selected.toLowerCase()}
-              onChange={onChange}
+              checked={checked[index]}
+              onChange={() => onChange(index)}
             />
-            <label className="radio-buttons__label" htmlFor={optionLower}>
+            <label className="checkboxes__label" htmlFor={optionLower}>
               {optionCapitalized}
             </label>
           </div>
