@@ -12,7 +12,7 @@
   padding: 1rem;
 
   .profile-card__image {
-    max-width: 250px;
+    max-width: 50px;
     width: 100%;
     border-radius: 3px;
   }
@@ -26,8 +26,32 @@
     word-break: break-word;
 
     .profile-card__heading {
-      font-size: 1.5rem;
-      font-weight: normal;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: underline;
+      text-align: center;
     }
+    .profile-card__tagline {
+      font-size: 15px;
+      font-weight: normal;
+      font-style: italic;
+      text-align: center;
+    }    
+    .profile-card__description {
+      font-size: 12px;
+      font-weight: normal;
+      text-align: justify;
+    } 
+    .profile-card__abv {
+      font-size: 10px;
+      font-weight: normal;
+      text-align: center;
+    } 
+    .profile-card__ph {
+      font-size: 10px;
+      font-weight: normal;
+      text-align: center;
+    } 
+
   }
 }

@@ -9,10 +9,10 @@ const ProfileCard = ({ name, image, tagline, description, abv, ph, id }) => {
       <img className="profile-card__image" src={image} alt={name} />
       <div className="profile-card__content">
         <h2 className="profile-card__heading">{name}</h2>
-        <h2 className="profile-card__heading">{tagline}</h2>
-        <h2 className="profile-card__heading">{description}</h2>
-        <h2 className="profile-card__heading">ABV: {abv}</h2>
-        <h2 className="profile-card__heading">Ph: {ph}</h2>
+        <h2 className="profile-card__tagline">{tagline}</h2>
+        <h2 className="profile-card__description">{description}</h2>
+        <h2 className="profile-card__abv">ABV: {abv}</h2>
+        <h2 className="profile-card__ph">Ph: {ph}</h2>
       </div>
     </div>
   );
