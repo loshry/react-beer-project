@@ -10,16 +10,20 @@ const url = "https://api.punkapi.com/v2/beers";
     return newData;
   };
 
-  export const findFilteredBeers = async (beerName, checkClassic, checkPh) => {
+  export const findFilteredBeers = async (beerName, checkAbv, checkClassic, checkPh) => {
     let query = "";
 
     // if one of our options is "true": beerName != "", checkClassic === true then query = "?"
-    if (checkClassic === true || beerName != "") {
+    if (checkAbv === true || checkClassic === true || beerName != "") {
       query += "?";
     }
 
     if (checkClassic === true) {
       query += "abv_gt=3.9&abv_lt=5.1";
+    }
+
+    if (checkAbv === true) {
+      query += "abv_gt=6";
     }
 
     if (beerName != "") {

@@ -22,7 +22,7 @@ const Nav = ({setData}) => {
     setSearchTerm(cleanInput);
 
     console.log(checkedState);
-    findFilteredBeers(cleanInput, checkedState[1], checkedState[2]).then(setData);
+    findFilteredBeers(cleanInput, checkedState[0], checkedState[1], checkedState[2]).then(setData);
 
     // findBeerByName(cleanInput).then(setData);
   };
@@ -46,7 +46,7 @@ const Nav = ({setData}) => {
       updatedCheckedState[1] = false;
       setCheckedState(updatedCheckedState);
     } else { 
-      findFilteredBeers(searchTerm, updatedCheckedState[1], updatedCheckedState[2]).then(setData);
+      findFilteredBeers(searchTerm, updatedCheckedState[0], updatedCheckedState[1], updatedCheckedState[2]).then(setData);
 
     }
 
