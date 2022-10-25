@@ -40,8 +40,18 @@ const Nav = ({setData}) => {
 
     setCheckedState(updatedCheckedState);
 
+    if (updatedCheckedState[0] && updatedCheckedState[1]) {
+      alert("These search items are mutually exclusive");
+      updatedCheckedState[0] = false;
+      updatedCheckedState[1] = false;
+      setCheckedState(updatedCheckedState);
+    } else { 
+      findFilteredBeers(searchTerm, updatedCheckedState[1], updatedCheckedState[2]).then(setData);
+
+    }
+
     console.log(searchTerm);
-    findFilteredBeers(searchTerm, updatedCheckedState[1], updatedCheckedState[2]).then(setData);
+    
 
     
   };
