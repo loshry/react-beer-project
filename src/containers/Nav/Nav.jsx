@@ -4,7 +4,8 @@ import React, {useState, useEffect} from 'react';
 import "./Nav.scss"; 
 import SearchBox from '../../components/SearchBox/SearchBox'
 import CheckBoxes from '../../components/CheckBoxes/CheckBoxes';
-import { findBeers, findAbv, findClassic, findPh, findBeerByName } from "../../data/beerData";
+import { findBeers, findAbv, findClassic, findPh, findBeerByName, findFilteredBeers } from "../../data/beerData";
+import { isCompositeComponent } from 'react-dom/test-utils';
 
 
 
@@ -19,11 +20,15 @@ const Nav = ({setData}) => {
     const cleanInput = event.target.value.toLowerCase();
     console.log(cleanInput);
     setSearchTerm(cleanInput);
-    findBeerByName(cleanInput).then(setData);
+
+    console.log(checkedState);
+    findFilteredBeers(cleanInput, checkedState[1], checkedState[2]).then(setData);
+
+    // findBeerByName(cleanInput).then(setData);
   };
 
   //CheckBox Data
-  const checkBoxOptions = ["All", "High ABV (>6.0%)", "Classic", "Acidity (Ph <4)"];
+  const checkBoxOptions = ["High ABV (>6.0%)", "Classic", "Acidity (Ph <4)"];
   const [checkedState, setCheckedState] = useState(
     new Array(checkBoxOptions.length).fill(false)
   );
@@ -35,8 +40,13 @@ const Nav = ({setData}) => {
 
     setCheckedState(updatedCheckedState);
 
+    console.log(searchTerm);
+    findFilteredBeers(searchTerm, updatedCheckedState[1], updatedCheckedState[2]).then(setData);
+
     
   };
+
+  
 
 
   // radioButton data

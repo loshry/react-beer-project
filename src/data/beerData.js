@@ -10,6 +10,41 @@ const url = "https://api.punkapi.com/v2/beers";
     return newData;
   };
 
+  export const findFilteredBeers = async (beerName, checkClassic, checkPh) => {
+    let query = "";
+
+    // if one of our options is "true": beerName != "", checkClassic === true then query = "?"
+    if (checkClassic === true || beerName != "") {
+      query += "?";
+    }
+
+    if (checkClassic === true) {
+      query += "abv_gt=3.9&abv_lt=5.1";
+    }
+
+    if (beerName != "") {
+      // if query === "?" then add beername, otherwise add "&beer_name=" + beerName
+      if (query === "?") {
+        query += "beer_name=" + beerName;
+      } else {
+        query += "&beer_name=" + beerName;
+      }
+    }
+
+
+    console.log(url + query);
+
+    const res = await fetch(url + query);
+    const data = await res.json();
+    let newData = data.map((beer) => cleanData(beer));
+    if (checkPh === true) {
+    newData = newData.filter((beer) => {
+      return beer.ph < 4;
+    });
+    }
+    return newData;
+  };
+
 
   export const findAbv = async () => {
     const res = await fetch(url + "?abv_gt=6");
