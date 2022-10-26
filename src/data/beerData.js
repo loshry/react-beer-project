@@ -19,20 +19,22 @@ const url = "https://api.punkapi.com/v2/beers";
     }
 
     if (checkClassic === true) {
-      query += "abv_gt=3.9&abv_lt=5.1";
+      query += "brewed_before=10_2011";
     }
-
+    
+    
     if (checkAbv === true) {
+      if (checkClassic === true) {
+        query += "&";
+      }
       query += "abv_gt=6";
     }
 
     if (beerName != "") {
-      // if query === "?" then add beername, otherwise add "&beer_name=" + beerName
-      if (query === "?") {
-        query += "beer_name=" + beerName;
-      } else {
-        query += "&beer_name=" + beerName;
-      }
+      if (checkAbv === true || checkClassic === true) {
+        query += "&"; 
+      } 
+      query += "beer_name=" + beerName;
     }
 
 

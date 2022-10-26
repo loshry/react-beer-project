@@ -4,8 +4,8 @@ import React, {useState, useEffect} from 'react';
 import "./Nav.scss"; 
 import SearchBox from '../../components/SearchBox/SearchBox'
 import CheckBoxes from '../../components/CheckBoxes/CheckBoxes';
-import { findBeers, findAbv, findClassic, findPh, findBeerByName, findFilteredBeers } from "../../data/beerData";
-import { isCompositeComponent } from 'react-dom/test-utils';
+import { findFilteredBeers } from "../../data/beerData";
+
 
 
 
@@ -24,7 +24,7 @@ const Nav = ({setData}) => {
     console.log(checkedState);
     findFilteredBeers(cleanInput, checkedState[0], checkedState[1], checkedState[2]).then(setData);
 
-    // findBeerByName(cleanInput).then(setData);
+    
   };
 
   //CheckBox Data
@@ -39,16 +39,9 @@ const Nav = ({setData}) => {
     );
 
     setCheckedState(updatedCheckedState);
+    findFilteredBeers(searchTerm, updatedCheckedState[0], updatedCheckedState[1], updatedCheckedState[2]).then(setData);
 
-    if (updatedCheckedState[0] && updatedCheckedState[1]) {
-      alert("These search items are mutually exclusive");
-      updatedCheckedState[0] = false;
-      updatedCheckedState[1] = false;
-      setCheckedState(updatedCheckedState);
-    } else { 
-      findFilteredBeers(searchTerm, updatedCheckedState[0], updatedCheckedState[1], updatedCheckedState[2]).then(setData);
 
-    }
 
     console.log(searchTerm);
     
