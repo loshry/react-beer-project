@@ -19,7 +19,7 @@ const url = "https://api.punkapi.com/v2/beers";
     }
 
     if (checkClassic === true) {
-      query += "brewed_before=10_2011";
+      query += "brewed_before=10-2011";
     }
     
     
